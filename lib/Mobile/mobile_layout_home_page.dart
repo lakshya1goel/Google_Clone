@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_clone/theme.dart';
 
 class MobileLayoutHomePage extends StatefulWidget {
   const MobileLayoutHomePage({super.key});
@@ -14,22 +15,65 @@ class _MobileLayoutHomePageState extends State<MobileLayoutHomePage> {
 
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        leading: Row(
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
           children: [
-            IconButton(
-              icon: Icon(Icons.menu,
-                color: Colors.grey,
+            Container(
+              height: 150,
+              child: DrawerHeader(
+                child: Text(
+                  'Search settings',
+                  style: TextStyle(
+                    color: Colors.grey,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 25,
+                  ),
+                ),
               ),
-              onPressed: () {},
+            ),
+            ListTile(
+              title: Text('Search history'),
+              onTap: () {},
+            ),
+            ListTile(
+              title: Text('SafeSearch'),
+              onTap: () {},
+            ),
+            ListTile(
+              title: Text('Language'),
+              onTap: () {},
+            ),
+            ListTile(
+              title: Text('Dark Theme'),
+              onTap: () {},
+            ),
+            ListTile(
+              title: Text('More settings'),
+              onTap: () {},
+            ),
+            ListTile(
+              title: Text('Saved'),
+              onTap: () {},
+            ),
+            ListTile(
+              title: Text('Send feedback'),
+              onTap: () {},
+            ),
+            ListTile(
+              title: Text('Your data in search'),
+              onTap: () {},
             ),
           ],
         ),
+      ),
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: backgroundColor,
         title: DefaultTabController(
           length: 2,
           child: TabBar(
+            indicatorColor: blueColor,
             tabs: [
               Tab(text: 'ALL'), // First tab named 'All'
               Tab(text: 'IMAGES'), // Second tab named 'Images'
@@ -79,20 +123,26 @@ class _MobileLayoutHomePageState extends State<MobileLayoutHomePage> {
               height: 30,
             ),
             Container(
+              alignment: Alignment.center,
               width: 300,
-              height: 40,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(30.0),
                 border: Border.all(color: Colors.grey),
-                color: Colors.grey[800],
+                color: searchColor,
               ),
-              child: TextFormField(
-                decoration: InputDecoration(
-                  focusedBorder: InputBorder.none,
-                  prefixIcon: Icon(Icons.search,
-                    color: Colors.grey,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                child: TextFormField(
+                  style: TextStyle(
+                    color: Colors.grey
                   ),
-              ),
+                  decoration: InputDecoration(
+                    focusedBorder: InputBorder.none,
+                    prefixIcon: Icon(Icons.search,
+                      color: Colors.grey,
+                    ),
+                ),
+                ),
               ),
             ),
             SizedBox(height: 20,),
@@ -109,7 +159,7 @@ class _MobileLayoutHomePageState extends State<MobileLayoutHomePage> {
                   child: Text(
                     lang[index],
                     style: TextStyle(
-                      color: Colors.blue,
+                      color: blueColor,
                     ),
                   ),
                 ),

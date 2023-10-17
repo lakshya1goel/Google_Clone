@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_clone/Mobile/mobile_layout_home_page.dart';
+import 'package:google_clone/theme.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,6 +16,9 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       home: const MobileLayoutHomePage(),
       debugShowCheckedModeBanner: false,
+      theme: ThemeData.dark().copyWith(
+        scaffoldBackgroundColor: backgroundColor,
+      ),
     );
   }
 }
