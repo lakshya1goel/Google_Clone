@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_clone/Web/web_search_screen.dart';
 import 'package:google_clone/theme.dart';
 
 class WebLayoutHomePage extends StatefulWidget {
@@ -12,6 +13,7 @@ class _WebLayoutHomePageState extends State<WebLayoutHomePage> {
   @override
 
   List<String> lang= ['हिन्दी', 'বাংলা', 'తెలుగు', 'मराठी', 'தமிழ்', 'ગુજરાતી', 'ಕನ್ನಡ', 'മലയാളം', 'ਪੰਜਾਬੀ'];
+  List<String> footerItems = ['About', 'Advertising', 'Business', 'How Search works', 'Privacy', 'Terms', 'Settings'];
 
   Widget build(BuildContext context) {
 
@@ -95,6 +97,12 @@ class _WebLayoutHomePageState extends State<WebLayoutHomePage> {
                       onPressed: () {},
                     ),
                   ),
+                  onFieldSubmitted: (value) {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => WebSearchScreen()),
+                    );
+                  },
                 ),
               ),
             ),
@@ -146,6 +154,29 @@ class _WebLayoutHomePageState extends State<WebLayoutHomePage> {
               ),
               ),
             ),
+            SizedBox(height: size.width*0.145,),
+            Container(
+              height: size.width*0.05,
+              width: size.width,
+              color: footerColor,
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: size.width*0.1),
+                child: Wrap(
+                  alignment: WrapAlignment.center,
+                  children: List.generate(
+                    footerItems.length, (index) => Container(
+                    padding: EdgeInsets.all(size.width*0.02),
+                    child: Text(
+                      footerItems[index],
+                      style: TextStyle(
+                        color: Colors.grey,
+                      ),
+                    ),
+                  ),
+                  ),
+                ),
+              ),
+            )
           ],
         ),
       ),

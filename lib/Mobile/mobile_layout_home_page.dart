@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_clone/Mobile/search_screen.dart';
 import 'package:google_clone/theme.dart';
 
 class MobileLayoutHomePage extends StatefulWidget {
@@ -12,22 +13,26 @@ class _MobileLayoutHomePageState extends State<MobileLayoutHomePage> {
   @override
 
   List<String> lang= ['हिन्दी', 'বাংলা', 'తెలుగు', 'मराठी', 'தமிழ்', 'ગુજરાતી', 'ಕನ್ನಡ', 'മലയാളം', 'ਪੰਜਾਬੀ'];
+  List<String> footerItems = ['Dark theme:on', 'Settings', 'Privacy', 'Terms', 'Advertising', 'Business', 'About'];
 
   Widget build(BuildContext context) {
+
+    final size = MediaQuery.of(context).size;
+
     return Scaffold(
       drawer: Drawer(
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
             Container(
-              height: 150,
+              height: size.width*0.4,
               child: DrawerHeader(
                 child: Text(
                   'Search settings',
                   style: TextStyle(
                     color: Colors.grey,
                     fontWeight: FontWeight.bold,
-                    fontSize: 25,
+                    fontSize: size.width*0.07,
                   ),
                 ),
               ),
@@ -84,18 +89,18 @@ class _MobileLayoutHomePageState extends State<MobileLayoutHomePage> {
           Row(
             children: [
               Container(
-                  width: 20,
-                  height: 20,
+                  width: size.width*0.05,
+                  height: size.width*0.05,
                   child: NineDotMatrixIcon()
               ),
               SizedBox(
-                width: 20,
+                width: size.width*0.06,
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                padding: EdgeInsets.symmetric(horizontal: size.width*0.02),
                 child: Container(
-                  height: 35,
-                  width: 35,
+                  height: size.width*0.1,
+                  width: size.width*0.1,
                   child: Center(
                     child: Text("L",
                       style: TextStyle(color: Colors.white),
@@ -112,60 +117,101 @@ class _MobileLayoutHomePageState extends State<MobileLayoutHomePage> {
         ],
       ),
       
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Image.asset("lib/assets/Images/google.png",
-              height: 50,
-            ),
-            SizedBox(
-              height: 30,
-            ),
-            Container(
-              alignment: Alignment.center,
-              width: 300,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(30.0),
-                border: Border.all(color: Colors.grey),
-                color: searchColor,
+      body: SingleChildScrollView(
+        child: Center(
+          child: Column(
+            children: [
+              SizedBox(
+                height: size.width*0.2,
               ),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                child: TextFormField(
-                  style: TextStyle(
-                    color: Colors.grey
-                  ),
-                  decoration: InputDecoration(
-                    focusedBorder: InputBorder.none,
-                    prefixIcon: Icon(Icons.search,
-                      color: Colors.grey,
-                    ),
+              Image.asset("lib/assets/Images/google.png",
+                height: size.width*0.2,
+              ),
+              SizedBox(
+                height: size.width*0.1,
+              ),
+              Container(
+                alignment: Alignment.center,
+                width: size.width*0.9,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(30.0),
+                  border: Border.all(color: Colors.grey),
+                  color: searchColor,
                 ),
-                ),
-              ),
-            ),
-            SizedBox(height: 20,),
-            Text("Google offered in:",
-              style: TextStyle(
-                color: Colors.grey,
-              ),
-            ),
-            Wrap(
-              alignment: WrapAlignment.center,
-              children: List.generate(
-                lang.length, (index) => Container(
-                  padding: EdgeInsets.all(10),
-                  child: Text(
-                    lang[index],
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: size.width*0.02),
+                  child: TextFormField(
                     style: TextStyle(
-                      color: blueColor,
+                      color: Colors.grey
+                    ),
+                    decoration: InputDecoration(
+                      focusedBorder: InputBorder.none,
+                      enabledBorder: InputBorder.none,
+                      prefixIcon: Icon(Icons.search,
+                        color: Colors.grey,
+                      ),
+                      suffixIcon: Icon(Icons.mic,
+                        color: blueColor,
+                      ),
+                  ),
+                    onFieldSubmitted: (value) {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => SearchScreen()),
+                      );
+                    },
+                  ),
+                ),
+              ),
+              SizedBox(height: size.width*0.05,),
+              Text("Google offered in:",
+                style: TextStyle(
+                  color: Colors.grey,
+                ),
+              ),
+              Wrap(
+                alignment: WrapAlignment.center,
+                children: List.generate(
+                  lang.length, (index) => Container(
+                    padding: EdgeInsets.all(size.width*0.02),
+                    child: Text(
+                      lang[index],
+                      style: TextStyle(
+                        color: blueColor,
+                      ),
                     ),
                   ),
                 ),
               ),
-            )
-          ],
+              SizedBox(
+                height: size.width*0.1,
+              ),
+              SizedBox(
+                height: size.width*0.49,
+              ),
+              Container(
+                width: size.width,
+                color: footerColor,
+                child: Padding(
+                  padding: EdgeInsets.all(size.width*0.1),
+                  child: Wrap(
+                    alignment: WrapAlignment.center,
+                    children: List.generate(
+                      footerItems.length, (index) => Container(
+                      padding: EdgeInsets.all(size.width*0.02),
+                      child: Text(
+                        footerItems[index],
+                        style: TextStyle(
+                          color: Colors.grey,
+                        ),
+                      ),
+                    ),
+                    ),
+                  ),
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
@@ -177,13 +223,16 @@ class _MobileLayoutHomePageState extends State<MobileLayoutHomePage> {
 class NineDotMatrixIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+
+    final size = MediaQuery.of(context).size;
+
     return GridView.count(
       crossAxisCount: 3,
       children: List.generate(9, (index) {
         return Center(
           child: Container(
-            width: 5,
-            height: 5,
+            width: size.width*0.012,
+            height: size.width*0.012,
             decoration: BoxDecoration(
               color: Colors.white,
               shape: BoxShape.circle,
