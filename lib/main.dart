@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_clone/Mobile/mobile_layout_home_page.dart';
 import 'package:google_clone/theme.dart';
 
+import 'Web/web_layout_home_page.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -14,7 +16,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      home: const MobileLayoutHomePage(),
+      home: const WebLayoutHomePage(),
       debugShowCheckedModeBanner: false,
       theme: ThemeData.dark().copyWith(
         scaffoldBackgroundColor: backgroundColor,
