@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:google_clone/Mobile/mobile_layout_home_page.dart';
+import 'package:google_clone/theme.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,8 +14,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      home: const Text("Welcome to Google!"),
+      home: const MobileLayoutHomePage(),
       debugShowCheckedModeBanner: false,
+      theme: ThemeData.dark().copyWith(
+        scaffoldBackgroundColor: backgroundColor,
+      ),
     );
   }
 }
