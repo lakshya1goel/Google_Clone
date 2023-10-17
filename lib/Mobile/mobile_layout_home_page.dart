@@ -12,6 +12,7 @@ class _MobileLayoutHomePageState extends State<MobileLayoutHomePage> {
   @override
 
   List<String> lang= ['हिन्दी', 'বাংলা', 'తెలుగు', 'मराठी', 'தமிழ்', 'ગુજરાતી', 'ಕನ್ನಡ', 'മലയാളം', 'ਪੰਜਾਬੀ'];
+  List<String> footerItems = ['Dark theme:on', 'Settings', 'Privacy', 'Terms', 'Advertising', 'Business', 'About'];
 
   Widget build(BuildContext context) {
 
@@ -115,64 +116,95 @@ class _MobileLayoutHomePageState extends State<MobileLayoutHomePage> {
         ],
       ),
       
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Image.asset("lib/assets/Images/google.png",
-              height: size.width*0.2,
-            ),
-            SizedBox(
-              height: size.width*0.1,
-            ),
-            Container(
-              alignment: Alignment.center,
-              width: size.width*0.9,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(30.0),
-                border: Border.all(color: Colors.grey),
-                color: searchColor,
+      body: SingleChildScrollView(
+        child: Center(
+          child: Column(
+            children: [
+              SizedBox(
+                height: size.width*0.2,
               ),
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: size.width*0.02),
-                child: TextFormField(
-                  style: TextStyle(
-                    color: Colors.grey
-                  ),
-                  decoration: InputDecoration(
-                    focusedBorder: InputBorder.none,
-                    enabledBorder: InputBorder.none,
-                    prefixIcon: Icon(Icons.search,
-                      color: Colors.grey,
-                    ),
-                    suffixIcon: Icon(Icons.mic,
-                      color: blueColor,
-                    ),
+              Image.asset("lib/assets/Images/google.png",
+                height: size.width*0.2,
+              ),
+              SizedBox(
+                height: size.width*0.1,
+              ),
+              Container(
+                alignment: Alignment.center,
+                width: size.width*0.9,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(30.0),
+                  border: Border.all(color: Colors.grey),
+                  color: searchColor,
                 ),
-                ),
-              ),
-            ),
-            SizedBox(height: size.width*0.05,),
-            Text("Google offered in:",
-              style: TextStyle(
-                color: Colors.grey,
-              ),
-            ),
-            Wrap(
-              alignment: WrapAlignment.center,
-              children: List.generate(
-                lang.length, (index) => Container(
-                  padding: EdgeInsets.all(size.width*0.02),
-                  child: Text(
-                    lang[index],
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: size.width*0.02),
+                  child: TextFormField(
                     style: TextStyle(
-                      color: blueColor,
+                      color: Colors.grey
+                    ),
+                    decoration: InputDecoration(
+                      focusedBorder: InputBorder.none,
+                      enabledBorder: InputBorder.none,
+                      prefixIcon: Icon(Icons.search,
+                        color: Colors.grey,
+                      ),
+                      suffixIcon: Icon(Icons.mic,
+                        color: blueColor,
+                      ),
+                  ),
+                  ),
+                ),
+              ),
+              SizedBox(height: size.width*0.05,),
+              Text("Google offered in:",
+                style: TextStyle(
+                  color: Colors.grey,
+                ),
+              ),
+              Wrap(
+                alignment: WrapAlignment.center,
+                children: List.generate(
+                  lang.length, (index) => Container(
+                    padding: EdgeInsets.all(size.width*0.02),
+                    child: Text(
+                      lang[index],
+                      style: TextStyle(
+                        color: blueColor,
+                      ),
                     ),
                   ),
                 ),
               ),
-            )
-          ],
+              SizedBox(
+                height: size.width*0.1,
+              ),
+              SizedBox(
+                height: size.width*0.49,
+              ),
+              Container(
+                width: size.width,
+                color: footerColor,
+                child: Padding(
+                  padding: EdgeInsets.all(size.width*0.1),
+                  child: Wrap(
+                    alignment: WrapAlignment.center,
+                    children: List.generate(
+                      footerItems.length, (index) => Container(
+                      padding: EdgeInsets.all(size.width*0.02),
+                      child: Text(
+                        footerItems[index],
+                        style: TextStyle(
+                          color: Colors.grey,
+                        ),
+                      ),
+                    ),
+                    ),
+                  ),
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
