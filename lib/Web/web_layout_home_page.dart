@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_clone/Web/web_search_screen.dart';
 import 'package:google_clone/theme.dart';
 
 class WebLayoutHomePage extends StatefulWidget {
@@ -95,6 +96,12 @@ class _WebLayoutHomePageState extends State<WebLayoutHomePage> {
                       onPressed: () {},
                     ),
                   ),
+                  onFieldSubmitted: (value) {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => WebSearchScreen()),
+                    );
+                  },
                 ),
               ),
             ),
