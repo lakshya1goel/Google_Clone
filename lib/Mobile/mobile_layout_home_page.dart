@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_clone/Mobile/search_screen.dart';
 import 'package:google_clone/theme.dart';
 
 class MobileLayoutHomePage extends StatefulWidget {
@@ -153,6 +154,12 @@ class _MobileLayoutHomePageState extends State<MobileLayoutHomePage> {
                         color: blueColor,
                       ),
                   ),
+                    onFieldSubmitted: (value) {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => SearchScreen()),
+                      );
+                    },
                   ),
                 ),
               ),
