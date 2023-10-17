@@ -14,20 +14,23 @@ class _MobileLayoutHomePageState extends State<MobileLayoutHomePage> {
   List<String> lang= ['हिन्दी', 'বাংলা', 'తెలుగు', 'मराठी', 'தமிழ்', 'ગુજરાતી', 'ಕನ್ನಡ', 'മലയാളം', 'ਪੰਜਾਬੀ'];
 
   Widget build(BuildContext context) {
+
+    final size = MediaQuery.of(context).size;
+
     return Scaffold(
       drawer: Drawer(
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
             Container(
-              height: 150,
+              height: size.width*0.4,
               child: DrawerHeader(
                 child: Text(
                   'Search settings',
                   style: TextStyle(
                     color: Colors.grey,
                     fontWeight: FontWeight.bold,
-                    fontSize: 25,
+                    fontSize: size.width*0.07,
                   ),
                 ),
               ),
@@ -84,18 +87,18 @@ class _MobileLayoutHomePageState extends State<MobileLayoutHomePage> {
           Row(
             children: [
               Container(
-                  width: 20,
-                  height: 20,
+                  width: size.width*0.05,
+                  height: size.width*0.05,
                   child: NineDotMatrixIcon()
               ),
               SizedBox(
-                width: 20,
+                width: size.width*0.06,
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                padding: EdgeInsets.symmetric(horizontal: size.width*0.02),
                 child: Container(
-                  height: 35,
-                  width: 35,
+                  height: size.width*0.1,
+                  width: size.width*0.1,
                   child: Center(
                     child: Text("L",
                       style: TextStyle(color: Colors.white),
@@ -117,35 +120,39 @@ class _MobileLayoutHomePageState extends State<MobileLayoutHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset("lib/assets/Images/google.png",
-              height: 50,
+              height: size.width*0.2,
             ),
             SizedBox(
-              height: 30,
+              height: size.width*0.1,
             ),
             Container(
               alignment: Alignment.center,
-              width: 300,
+              width: size.width*0.9,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(30.0),
                 border: Border.all(color: Colors.grey),
                 color: searchColor,
               ),
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                padding: EdgeInsets.symmetric(horizontal: size.width*0.02),
                 child: TextFormField(
                   style: TextStyle(
                     color: Colors.grey
                   ),
                   decoration: InputDecoration(
                     focusedBorder: InputBorder.none,
+                    enabledBorder: InputBorder.none,
                     prefixIcon: Icon(Icons.search,
                       color: Colors.grey,
+                    ),
+                    suffixIcon: Icon(Icons.mic,
+                      color: blueColor,
                     ),
                 ),
                 ),
               ),
             ),
-            SizedBox(height: 20,),
+            SizedBox(height: size.width*0.05,),
             Text("Google offered in:",
               style: TextStyle(
                 color: Colors.grey,
@@ -155,7 +162,7 @@ class _MobileLayoutHomePageState extends State<MobileLayoutHomePage> {
               alignment: WrapAlignment.center,
               children: List.generate(
                 lang.length, (index) => Container(
-                  padding: EdgeInsets.all(10),
+                  padding: EdgeInsets.all(size.width*0.02),
                   child: Text(
                     lang[index],
                     style: TextStyle(
@@ -177,13 +184,16 @@ class _MobileLayoutHomePageState extends State<MobileLayoutHomePage> {
 class NineDotMatrixIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+
+    final size = MediaQuery.of(context).size;
+
     return GridView.count(
       crossAxisCount: 3,
       children: List.generate(9, (index) {
         return Center(
           child: Container(
-            width: 5,
-            height: 5,
+            width: size.width*0.012,
+            height: size.width*0.012,
             decoration: BoxDecoration(
               color: Colors.white,
               shape: BoxShape.circle,
